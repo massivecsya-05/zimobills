@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f4f4;
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  background: #ff6600;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.search-bar {
+  padding: 10px;
+}
+
+.search-bar input {
+  width: 95%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+section {
+  padding: 10px;
+}
+
+.card {
+  display: flex;
+  background: #fff;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  width: 100px;
+  object-fit: cover;
+}
+
+.card div {
+  padding: 10px;
+}
+
+button {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: #eee;
+  border-top: 1px solid #ccc;
+}
+
+nav button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+nav button i {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+nav button:hover {
+  color: #ff6600;
+}

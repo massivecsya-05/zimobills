@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Foodies Gallery</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Foodies Gallery</h1>
+      <div class="profile">
+        <img src="kali.jpg" alt="kali" />
+        <span>Troops</span>
+      </div>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search restaurants or dishes..." />
+    </div>
+
+    <section class="featured">
+      <h2>Featured Restaurants</h2>
+      <div class="card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.9-kLfL7elpdmmfq2KUyGggHaHa?r=0&pid=ImgDet&w=474&h=474&rs=1&o=7&rm=3" alt="Rice Master" />
+        <div>
+          <h3>Rice Master</h3>
+          <p>20-30 mins</p>
+          <button onclick="placeOrder('Rice Master')">Order</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.Fbmd7ssp7K26faqh3tX7lgHaHa?r=0&w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pork Master" />
+        <div>
+          <h3>Pork Master</h3>
+          <p>20-30 mins</p>
+          <button onclick="placeOrder('Pork Master')">Order</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="popular">
+      <h2>Popular Nearby</h2>
+      <div class="card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.Hsk_d9r4IRfRxfuLexKqrQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3.jpg" alt="Pizza" />
+        <div>
+          <h3>Pizza</h3>
+          <p>20-30 mins</p>
+          <button onclick="placeOrder('Pizza')">Order</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.jE69olk-BZ2wMZ9KY2_GQQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Goated" />
+        <div>
+          <h3>Goated</h3>
+          <p>20-30 mins</p>
+          <button onclick="placeOrder('Goated')">Order</button>
+        </div>
+      </div>
+    </section>
+
+    <nav>
+  <button><i class="fas fa-home"></i><span>Home</span></button>
+  <button><i class="fas fa-search"></i><span>Search</span></button>
+  <button><i class="fas fa-box"></i><span>Orders</span></button>
+  <button><i class="fas fa-user"></i><span>Profile</span></button>
+</nav>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
