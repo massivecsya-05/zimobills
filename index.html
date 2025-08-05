@@ -1,75 +1,119 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Foodies Gallery</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h1>Food Store</h1>
-      <div class="profile">
-        <img src="kali.jpg" alt="kali"/>
-        <span>Kali04</span>
-      </div>
-    </header>
+    <!--sidebar-->
+    <div class="sidebar">
+        <!--logo-->
+        <h1 class="logo">Kali04</h1>
 
-    <div class="search-bar">
-      <input type="text" placeholder="Search restaurants or dishes..." />
+        <!--list of menus-->
+        <div class="sidebar-menus">
+            <a href="#"><ion-icon name="storefront-outline"></ion-icon>Home</a>
+            <a href="#"><ion-icon name="receipt-outline"></ion-icon>Bills</a>
+            <a href="#"><ion-icon name="wallet-outline"></ion-icon>Wallet</a>
+            <a href="#"><ion-icon name="notifications-outline"></ion-icon>Notifications</a>
+            <a href="#"><ion-icon name="chatbubbles-outline"></ion-icon>Contact Us</a>
+            <a href="#"><ion-icon name="settings-outline"></ion-icon>Settings</a>
+        </div>
+        <!--logout-->
+        <div class="sidebar-logout">
+            <a href="#"><ion-icon name="log-out-outline"></ion-icon>Logout</a>
+        </div>
+    </div>
+    <!--main-->
+    <div class="main">
+        <!--main navbar-->
+        <div class="main-navbar">
+            <!--menu when appear on mobile version-->
+            <ion-icon class="menu-toggle" name="menu-outline"></ion-icon>
+            <!--searchbar-->
+            <div class="search">
+                <input type="text" placeholder="What do you want to eat?">
+            <button class="search-btn">Search</button>            
+        </div>
+        <!--profile icon on left-->
+        <div class="profile">
+            <a class="cart" href=""><ion-icon name="cart-outline"></ion-icon></a>
+            <a class="user" href=""><ion-icon name="person-outline"></ion-icon></a>
+        </div>
     </div>
 
-    <section class="featured">
-      <h2>Featured Restaurants</h2>
-      <div class="card">
-        <img src="https://tse3.mm.bing.net/th/id/OIP.9-kLfL7elpdmmfq2KUyGggHaHa?r=0&pid=ImgDet&w=474&h=474&rs=1&o=7&rm=3" alt="Rice Master" />
-        <div>
-          <h3>Rice Master</h3>
-          <p>20-30 mins</p>
-          <button onclick="placeOrder('Rice Master')">Order</button>
+    <div class="main-highlight">
+        <div class="main-header">
+            <h2 class="main-title">Recommendations</h2>
+            <div class="main-arrow">
+                <ion-icon class="back" name="chevron-back-outline"></ion-icon>
+                <ion-icon class="next" name="chevron-forward-outline"></ion-icon>
+            </div>
+            <div class="highlight-wrapper">
+                
+                <div class="highlight-card">
+                    <img class="highlight-img" src="kali1.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$1.2</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="kali.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$1.2</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="kali1.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$1.2</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="kali1.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$1.2</p>
+                    </div>
+                </div>
+                <div class="highlight-card">
+                    <img class="highlight-img" src="kali1.jpg">
+                    <div class="highlight-desc">
+                        <h4>Fresh Salad</h4>
+                        <p>$1.2</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <img src="https://tse4.mm.bing.net/th/id/OIP.Fbmd7ssp7K26faqh3tX7lgHaHa?r=0&w=500&h=500&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Pork Master" />
-        <div>
-          <h3>Pork Master</h3>
-          <p>20-30 mins</p>
-          <button onclick="placeOrder('Pork Master')">Order</button>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <section class="popular">
-      <h2>Popular Nearby</h2>
-      <div class="card">
-        <img src="https://tse4.mm.bing.net/th/id/OIP.Hsk_d9r4IRfRxfuLexKqrQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3.jpg" alt="Pizza" />
-        <div>
-          <h3>Pizza</h3>
-          <p>20-30 mins</p>
-          <button onclick="placeOrder('Pizza')">Order</button>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://tse4.mm.bing.net/th/id/OIP.jE69olk-BZ2wMZ9KY2_GQQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Goated" />
-        <div>
-          <h3>Goated</h3>
-          <p>20-30 mins</p>
-          <button onclick="placeOrder('Goated')">Order</button>
-        </div>
-      </div>
-    </section>
-
-    <nav>
-  <button><i class="fas fa-home"></i><span>Home</span></button>
-  <button><i class="fas fa-box"></i><span>Orders</span></button>
-  <button><i class="fas fa-user"></i><span>Profile</span></button>
-</nav>
-
-  </div>
-
-  <script src="script.js"></script>
+    <div class="main-menus">
+            <!--sections-->
+            <div class="main-filter">
+                <div>
+                    <h2 class="main-title">Menu <br> Category</h2>
+                    <div class="main-arrow">
+                        <ion-icon class="back-menus" name="chevron-back-circle-outline"></ion-icon>
+                        <ion-icon class="next-menus" name="chevron-forward-circle-outline"></ion-icon>
+                    </div>
+                </div>
+                <div class="filter-wrapper">
+                    <div class="filter-card">
+                        <div class="filter-icon">
+                            <ion-icon name="restaurants-outline"></ion-icon>
+                        </div>
+                        <p>All menus</p>
+                    </div>
+                </div>
+            </div>
+            <!--list of food-->
+    </div>
 </body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
