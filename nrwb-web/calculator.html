@@ -1,0 +1,46 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="/css/styles.css"/><title>NRWB - Bill Calculator</title></head>
+<body>
+<header><h1>Bill Calculator</h1><nav>
+<a href="/index.html">Home</a>
+<a href="/faults.html">Faults</a>
+<a href="/bills.html">Bills</a>
+<a href="/tokens.html">Tokens</a>
+<a href="/complaints.html">Complaints</a>
+<a href="/calculator.html">Calculator</a>
+<a href="/tips.html">Tip-offs</a>
+<a href="/announcements.html">Announcements</a>
+</nav></header>
+<main>
+<form id="calcForm">
+<label>Previous Reading (m³)<input name="prev" type="number" step="1" required/></label>
+<label>Current Reading (m³)<input name="curr" type="number" step="1" required/></label>
+<button type="submit">Calculate</button>
+</form>
+<div id="calcResult" class="card" style="display:none"></div>
+</main>
+<script>
+function calculateBill(previous, current){
+  const consumption = Math.max(0, current - previous);
+  const tier1 = Math.min(consumption, 10);
+  const tier2 = Math.max(0, consumption - 10);
+  const subtotal = tier1 * 500 + tier2 * 750;
+  const levy = subtotal * 0.05;
+  const total = subtotal + levy;
+  return { consumption, subtotal, levy, total };
+}
+const form = document.getElementById('calcForm');
+const result = document.getElementById('calcResult');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const prev = parseFloat(fd.get('prev'));
+  const curr = parseFloat(fd.get('curr'));
+  if(isNaN(prev) || isNaN(curr) || curr < prev){ result.style.display='block'; result.innerHTML = 'Invalid input'; return; }
+  const r = calculateBill(prev, curr);
+  result.style.display='block';
+  result.innerHTML = `Consumption: ${r.consumption} m³<br/>Subtotal: MWK ${r.subtotal.toFixed(2)}<br/>Levy: MWK ${r.levy.toFixed(2)}<br/><strong>Total: MWK ${r.total.toFixed(2)}</strong>`;
+});
+</script>
+</body></html>

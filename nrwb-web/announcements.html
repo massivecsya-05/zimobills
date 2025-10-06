@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="/css/styles.css"/><title>NRWB - Announcements</title></head>
+<body>
+<header><h1>Announcements</h1><nav>
+<a href="/index.html">Home</a>
+<a href="/faults.html">Faults</a>
+<a href="/bills.html">Bills</a>
+<a href="/tokens.html">Tokens</a>
+<a href="/complaints.html">Complaints</a>
+<a href="/calculator.html">Calculator</a>
+<a href="/tips.html">Tip-offs</a>
+<a href="/announcements.html">Announcements</a>
+</nav></header>
+<main>
+<div id="list" class="list"></div>
+<form id="annForm" class="card">
+  <h3>Post Announcement</h3>
+  <label>Title<input name="title" required/></label>
+  <label>Body<textarea name="body" required></textarea></label>
+  <label>Date<input name="date" required placeholder="YYYY-MM-DD"/></label>
+  <button type="submit">Post</button>
+</form>
+</main>
+<script>
+const API = localStorage.getItem('apiBase') || 'http://localhost:8000';
+async function load(){
+  const res = await fetch(`${API}/announcements`);
+  const data = await res.json();
+  const list = document.getElementById('list');
+  list.innerHTML = '';
+  data.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `<strong>${item.title}</strong><div style='color:#64748b'>${item.date}</div><div>${item.body}</div>`;
+    list.appendChild(div);
+  });
+}
+const form = document.getElementById('annForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const res = await fetch(`${API}/announcements`, { method: 'POST', body: fd });
+  if(res.ok){ form.reset(); load(); }
+});
+load();
+</script>
+</body></html>
