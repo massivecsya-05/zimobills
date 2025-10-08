@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="/css/styles.css"/><title>NRWB - Tokens</title></head>
+<body>
+<header><h1>Prepaid Tokens</h1><nav>
+<a href="/index.html">Home</a>
+<a href="/faults.html">Faults</a>
+<a href="/bills.html">Bills</a>
+<a href="/tokens.html">Tokens</a>
+<a href="/complaints.html">Complaints</a>
+<a href="/calculator.html">Calculator</a>
+<a href="/tips.html">Tip-offs</a>
+<a href="/announcements.html">Announcements</a>
+</nav></header>
+<main>
+<form id="tokenForm">
+<label>Meter<input name="meter" required/></label>
+<label>Reference<input name="reference" required/></label>
+<button type="submit">Retrieve Token</button>
+</form>
+<div id="tokenResult" class="card" style="display:none"></div>
+</main>
+<script>
+const API = localStorage.getItem('apiBase') || 'http://localhost:8000';
+const form = document.getElementById('tokenForm');
+const result = document.getElementById('tokenResult');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const res = await fetch(`${API}/tokens`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ meter: fd.get('meter'), reference: fd.get('reference') }) });
+  const data = await res.json();
+  result.style.display = 'block';
+  result.innerHTML = `<h3>Token</h3><div style="font-size:20px;letter-spacing:2px;">${data.token}</div>`;
+});
+</script>
+</body></html>

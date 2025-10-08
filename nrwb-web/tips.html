@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="/css/styles.css"/><title>NRWB - Anonymous Tip-offs</title></head>
+<body>
+<header><h1>Anonymous Tip-offs</h1><nav>
+<a href="/index.html">Home</a>
+<a href="/faults.html">Faults</a>
+<a href="/bills.html">Bills</a>
+<a href="/tokens.html">Tokens</a>
+<a href="/complaints.html">Complaints</a>
+<a href="/calculator.html">Calculator</a>
+<a href="/tips.html">Tip-offs</a>
+<a href="/announcements.html">Announcements</a>
+</nav></header>
+<main>
+<form id="tipForm">
+<label>Tip<textarea name="text" required placeholder="Describe the issue"></textarea></label>
+<label>Latitude<input name="latitude" type="number" step="any"/></label>
+<label>Longitude<input name="longitude" type="number" step="any"/></label>
+<label>Photo<input name="photo" type="file" accept="image/*"/></label>
+<button type="submit">Submit Tip</button>
+</form>
+</main>
+<script>
+const API = localStorage.getItem('apiBase') || 'http://localhost:8000';
+const form = document.getElementById('tipForm');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(form);
+  const res = await fetch(`${API}/tips`, { method: 'POST', body: fd });
+  if(res.ok){ alert('Submitted'); form.reset(); }
+  else{ alert('Error'); }
+});
+</script>
+</body></html>
